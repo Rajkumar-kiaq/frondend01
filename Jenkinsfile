@@ -25,14 +25,13 @@ pipeline {
                 script {
                     def scannerhome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     
-                    // Direct token based query parameter validation mapping enabled securely
+                    // Triggering clean passwordless analysis matching your adjusted docker profile
                     sh """
                     ${scannerhome}/bin/sonar-scanner \
                     -Dsonar.projectKey=frontend \
                     -Dsonar.projectName=frontend-app \
                     -Dsonar.sources=src \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=YOUR_COPIED_API_HASH_TOKEN_HERE
+                    -Dsonar.host.url=http://localhost:9000
                     """
                 }
             }
