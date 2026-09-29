@@ -25,15 +25,12 @@ pipeline {
                 script {
                     def scannerhome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     
-                    // Bypassed Jenkins credential entries by using direct login credentials flags
                     sh """
                     ${scannerhome}/bin/sonar-scanner \
                     -Dsonar.projectKey=frontend \
                     -Dsonar.projectName=frontend-app \
                     -Dsonar.sources=src \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=admin \
-                    -Dsonar.password=admin
+                    -Dsonar.host.url=http://localhost:9000
                     """
                 }
             }
