@@ -25,6 +25,7 @@ pipeline {
                 script {
                     def scannerhome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     
+                    // Simple unauthenticated scan call now allowed by the server configuration
                     sh """
                     ${scannerhome}/bin/sonar-scanner \
                     -Dsonar.projectKey=frontend \
